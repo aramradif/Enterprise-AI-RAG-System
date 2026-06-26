@@ -7,6 +7,33 @@ This project demonstrates how modern AI systems combine semantic search, vector 
 Designed as an enterprise-style AI Engineering project for scalable educational and knowledge retrieval applications.
 
 
+## Project Status
+
+**Current Version:** v1.2
+
+### Completed
+
+- ✅ FastAPI REST API
+- ✅ Retrieval-Augmented Generation (RAG)
+- ✅ OpenAI Embeddings
+- ✅ ChromaDB Vector Database
+- ✅ Multi-document Ingestion
+- ✅ Source Metadata & Citations
+- ✅ Enterprise Folder Loader
+- ✅ TXT Support
+- ✅ PDF Support
+- ✅ DOCX Support
+- ✅ Markdown Support
+
+### Next Milestones
+
+- Hybrid Search
+- Conversation Memory
+- Streaming Responses
+- Authentication
+- Docker Deployment
+
+
 ## Overview
 
 Traditional Large Language Models generate responses based only on their training data.
@@ -27,69 +54,97 @@ The result is a more accurate and reliable AI assistant that can answer question
 
 ## Architecture
 
-User Question
-│
-▼
-FastAPI Endpoint (/ask)
-│
-▼
-Semantic Search
-│
-▼
-ChromaDB Vector Store
-│
-▼
-Relevant Context Retrieval
-│
-▼
-GPT-4o-mini
-│
-▼
-Grounded Response
+```text
+                 Documents
+       (TXT • PDF • DOCX • MD)
+                    │
+                    ▼
+         Enterprise Folder Loader
+                    │
+                    ▼
+              Text Extraction
+                    │
+                    ▼
+             Automatic Chunking
+                    │
+                    ▼
+            OpenAI Embeddings
+                    │
+                    ▼
+             Chroma Vector DB
+                    │
+                    ▼
+             Semantic Retrieval
+                    │
+                    ▼
+            FastAPI RAG Endpoint
+                    │
+                    ▼
+               GPT-4o-mini
+                    │
+                    ▼
+             Grounded Response
+```
 
 ## Features
 
-* Retrieval-Augmented Generation (RAG)
-* OpenAI Embeddings
-* ChromaDB Vector Database
-* Semantic Search
-* FastAPI REST API
-* Configurable Environment Variables
-* Modular Enterprise Architecture
-* GPT-4o-mini Integration
-* Document Chunking Pipeline
-* Local Vector Storage
+## Features
+
+- ✅ Retrieval-Augmented Generation (RAG)
+- ✅ FastAPI REST API
+- ✅ OpenAI Embeddings
+- ✅ ChromaDB Vector Database
+- ✅ Semantic Search
+- ✅ Multi-document Ingestion
+- ✅ Source Metadata & Citations
+- ✅ Automatic Text Chunking
+- ✅ Enterprise Folder Loader
+- ✅ Modular Document Loaders
+- ✅ Automatic File Type Detection
+- ✅ Support for TXT, PDF, DOCX, and Markdown
+- ✅ Production-ready Project Structure
 
 
 ## Technology Stack
 
 ### Backend
 
-* Python 3.11
-* FastAPI
-* Uvicorn
+- Python 3.14
+- FastAPI
+- Uvicorn
 
-### AI / Machine Learning
+### AI
 
-* OpenAI API
-* GPT-4o-mini
-* text-embedding-3-small
+- OpenAI API
+- GPT-4o-mini
+- text-embedding-3-small
 
 ### Vector Database
 
-* ChromaDB
+- ChromaDB
 
-### Libraries
+### Document Processing
 
-* LangChain
-* LangChain OpenAI
-* Pydantic Settings
+- TXT
+- PDF (pypdf)
+- DOCX (python-docx)
+- Markdown (markdown + BeautifulSoup)
 
 ### Development
 
-* Git
-* GitHub
-* VS Code
+- Git
+- GitHub
+- VS Code
+
+
+## Supported Document Types
+
+| Document Type | Supported |
+|--------------|-----------|
+| TXT | ✅ |
+| PDF | ✅ |
+| DOCX | ✅ |
+| Markdown | ✅ |
 
 
 ## Project Structure
@@ -180,15 +235,28 @@ Response:
 
 ## Roadmap
 
-* Multi-document ingestion
-* PDF support
-* Conversational memory
-* Hybrid search
-* Evaluation framework
-* Agentic workflows
-* Multi-agent orchestration
-* Cloud deployment
-* Authentication & RBAC
-* Production monitoring
+### Completed
+
+- ✅ FastAPI Backend
+- ✅ ChromaDB Integration
+- ✅ Semantic Search
+- ✅ Multi-document Ingestion
+- ✅ Source Metadata & Citations
+- ✅ PDF Support
+- ✅ DOCX Support
+- ✅ Markdown Support
+
+### Planned
+
+- Hybrid Search (Semantic + Keyword)
+- Conversational Memory
+- Streaming Responses
+- Authentication & Authorization
+- Docker & Containerization
+- CI/CD Pipeline
+- Cloud Deployment (AWS / Azure)
+- Evaluation Framework
+- Agentic Workflows
+- Multi-Agent Orchestration
 
 
