@@ -1,22 +1,44 @@
 from pathlib import Path
 
+from app.ingestion.txt_loader import load_txt
+from app.ingestion.pdf_loader import load_pdf
+from app.ingestion.docx_loader import load_docx
+from app.ingestion.markdown_loader import load_markdown
+
 
 def load_documents(folder_path: str):
-    """
-    Load all text files from a folder.
-    """
 
     documents = []
 
-    for file_path in Path(folder_path).glob("*.txt"):
+    folder = Path(folder_path)
 
-        text = file_path.read_text(
-            encoding="utf-8"
-        )
+    for file in folder.iterdir():
+
+        if file.is_dir():
+            continue
+
+        suffix = file.suffix.lower()
+
+        text = None
+
+        if suffix == ".txt":
+            text = load_txt(file)
+
+        elif suffix == ".pdf":
+            text = load_pdf(file)
+
+        elif suffix == ".docx":
+            text = load_docx(file)
+
+        elif suffix == ".md":
+            text = load_markdown(file)
+
+        else:
+            continue
 
         documents.append(
             {
-                "filename": file_path.name,
+                "filename": file.name,
                 "content": text,
             }
         )

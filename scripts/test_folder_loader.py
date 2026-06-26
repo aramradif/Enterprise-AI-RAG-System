@@ -1,11 +1,9 @@
 from app.ingestion.folder_loader import load_documents
 
-
 documents = load_documents("data")
 
-print(
-    f"Loaded {len(documents)} documents."
-)
+print(f"\nLoaded {len(documents)} documents.\n")
 
-for doc in documents:
-    print(doc["filename"])
+for document in documents:
+
+    print(document["filename"])
