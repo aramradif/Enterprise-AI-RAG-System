@@ -13,17 +13,17 @@ Designed as an enterprise-style AI Engineering project for scalable educational 
 
 ### Completed
 
-- ✅ FastAPI REST API
-- ✅ Retrieval-Augmented Generation (RAG)
-- ✅ OpenAI Embeddings
-- ✅ ChromaDB Vector Database
-- ✅ Multi-document Ingestion
-- ✅ Source Metadata & Citations
-- ✅ Enterprise Folder Loader
-- ✅ TXT Support
-- ✅ PDF Support
-- ✅ DOCX Support
-- ✅ Markdown Support
+-  FastAPI REST API
+-  Retrieval-Augmented Generation (RAG)
+-  OpenAI Embeddings
+-  ChromaDB Vector Database
+-  Multi-document Ingestion
+-  Source Metadata & Citations
+-  Enterprise Folder Loader
+-  TXT Support
+-  PDF Support
+-  DOCX Support
+-  Markdown Support
 
 ### Next Milestones
 
@@ -90,19 +90,19 @@ The result is a more accurate and reliable AI assistant that can answer question
 
 ## Features
 
-- ✅ Retrieval-Augmented Generation (RAG)
-- ✅ FastAPI REST API
-- ✅ OpenAI Embeddings
-- ✅ ChromaDB Vector Database
-- ✅ Semantic Search
-- ✅ Multi-document Ingestion
-- ✅ Source Metadata & Citations
-- ✅ Automatic Text Chunking
-- ✅ Enterprise Folder Loader
-- ✅ Modular Document Loaders
-- ✅ Automatic File Type Detection
-- ✅ Support for TXT, PDF, DOCX, and Markdown
-- ✅ Production-ready Project Structure
+-  Retrieval-Augmented Generation (RAG)
+-  FastAPI REST API
+-  OpenAI Embeddings
+-  ChromaDB Vector Database
+-  Semantic Search
+-  Multi-document Ingestion
+-  Source Metadata & Citations
+-  Automatic Text Chunking
+-  Enterprise Folder Loader
+-  Modular Document Loaders
+-  Automatic File Type Detection
+-  Support for TXT, PDF, DOCX, and Markdown
+-  Production-ready Project Structure
 
 
 ## Technology Stack
@@ -237,14 +237,14 @@ Response:
 
 ### Completed
 
-- ✅ FastAPI Backend
-- ✅ ChromaDB Integration
-- ✅ Semantic Search
-- ✅ Multi-document Ingestion
-- ✅ Source Metadata & Citations
-- ✅ PDF Support
-- ✅ DOCX Support
-- ✅ Markdown Support
+-  FastAPI Backend
+-  ChromaDB Integration
+-  Semantic Search
+-  Multi-document Ingestion
+-  Source Metadata & Citations
+-  PDF Support
+-  DOCX Support
+-  Markdown Support
 
 ### Planned
 
