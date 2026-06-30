@@ -1,5 +1,6 @@
 from app.retrieval.hybrid_search import hybrid_search
 from app.llm.prompt_builder import build_prompt
+from app.llm.rag import generate_answer
 from app.core.context_manager import select_context
 
 
@@ -33,3 +34,15 @@ class RAGService:
         )
 
         return prompt
+
+    def answer(
+        self,
+        question: str,
+    ):
+        """
+        Complete Enterprise RAG pipeline.
+        """
+
+        prompt = self.build_prompt(question)
+
+        return generate_answer(prompt)
