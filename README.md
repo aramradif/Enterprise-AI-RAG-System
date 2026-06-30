@@ -20,7 +20,7 @@ Designed as an enterprise-style AI Engineering project for scalable educational 
 
 ## Project Status
 
-**Current Version:** v1.2
+**Current Version:** v1.6
 
 ### Completed
 
@@ -35,14 +35,21 @@ Designed as an enterprise-style AI Engineering project for scalable educational 
 -  PDF Support
 -  DOCX Support
 -  Markdown Support
+- Hybrid Search
+- Keyword Search
+- Context Management
+- Prompt Engineering
+- GPT-4o-mini Answer Generation
+- End-to-End Enterprise RAG Pipeline
 
 ### Next Milestones
 
-- Hybrid Search
 - Conversation Memory
 - Streaming Responses
-- Authentication
+- Retrieval Evaluation
 - Docker Deployment
+- CI/CD
+- Cloud Deployment
 
 
 ## Overview
@@ -63,57 +70,84 @@ This project allows users to:
 The result is a more accurate and reliable AI assistant that can answer questions based on specific knowledge sources.
 
 
-## Architecture
-
 ```text
                  Documents
-       (TXT • PDF • DOCX • MD)
-                    │
-                    ▼
-         Enterprise Folder Loader
-                    │
-                    ▼
+        (TXT • PDF • DOCX • MD)
+                     │
+                     ▼
+          Enterprise Folder Loader
+                     │
+                     ▼
               Text Extraction
-                    │
-                    ▼
+                     │
+                     ▼
              Automatic Chunking
-                    │
-                    ▼
-            OpenAI Embeddings
-                    │
-                    ▼
-             Chroma Vector DB
-                    │
-                    ▼
-             Semantic Retrieval
-                    │
-                    ▼
-            FastAPI RAG Endpoint
-                    │
-                    ▼
-               GPT-4o-mini
-                    │
-                    ▼
+                     │
+                     ▼
+           OpenAI Embeddings
+                     │
+                     ▼
+              ChromaDB Vector Store
+                     │
+                     ▼
+         Hybrid Search (Semantic + Keyword)
+                     │
+                     ▼
+              Context Manager
+                     │
+                     ▼
+               Prompt Builder
+                     │
+                     ▼
+                GPT-4o-mini
+                     │
+                     ▼
              Grounded Response
 ```
 
-## Features
 
 ## Features
+
+### Core RAG Capabilities
 
 -  Retrieval-Augmented Generation (RAG)
--  FastAPI REST API
+-  GPT-4o-mini Integration
 -  OpenAI Embeddings
 -  ChromaDB Vector Database
+
+### Retrieval Pipeline
+
 -  Semantic Search
--  Multi-document Ingestion
--  Source Metadata & Citations
--  Automatic Text Chunking
--  Enterprise Folder Loader
--  Modular Document Loaders
--  Automatic File Type Detection
--  Support for TXT, PDF, DOCX, and Markdown
--  Production-ready Project Structure
+-  Keyword Search
+-  Hybrid Retrieval (Semantic + Keyword)
+-  Intelligent Context Management
+-  Prompt Engineering
+
+### Document Processing
+
+-  Multi-format Document Ingestion
+  - TXT
+  - PDF
+  - DOCX
+  - Markdown
+-  Document Chunking Pipeline
+-  Metadata & Source Tracking
+
+### Architecture
+
+-  FastAPI REST API
+-  Modular Enterprise Architecture
+-  Configurable Environment Variables
+-  End-to-End Enterprise RAG Pipeline
+-  Local Vector Storage
+
+### AI Pipeline
+
+-  Hybrid Retrieval
+-  Context Window Management
+-  Prompt Engineering
+-  GPT-4o-mini Response Generation
+-  Grounded Answer Generation
 
 
 ## Technology Stack
@@ -160,35 +194,28 @@ The result is a more accurate and reliable AI assistant that can answer question
 
 ## Project Structure
 
+```text
 RAG-Learning-Assistant/
-
-├── app/
-
-│   ├── api/
-
-│   ├── config/
-
-│   ├── embeddings/
-
-│   ├── ingestion/
-
-│   ├── llm/
-
-│   ├── retrieval/
-
-│   └── models/
-
 │
-
-├── scripts/
-
+├── app/
+│   ├── api/
+│   ├── config/
+│   ├── core/
+│   ├── embeddings/
+│   ├── ingestion/
+│   ├── llm/
+│   ├── models/
+│   ├── retrieval/
+│   └── services/
+│
+├── assets/
 ├── data/
-
+├── scripts/
+│
 ├── main.py
-
 ├── requirements.txt
-
 └── README.md
+```
 
 
 ## Installation
@@ -252,28 +279,54 @@ Response:
 
 ## Roadmap
 
-### Completed
+### Phase 1 — Enterprise Retrieval 
 
--  FastAPI Backend
--  ChromaDB Integration
--  Semantic Search
--  Multi-document Ingestion
--  Source Metadata & Citations
--  PDF Support
--  DOCX Support
--  Markdown Support
+- FastAPI Backend
+- ChromaDB Integration
+- Multi-format Document Ingestion
+- Semantic Search
+- Keyword Search
+- Hybrid Retrieval
+- Context Management
+- Prompt Engineering
 
-### Planned
+### Phase 2 — GPT Integration 
 
-- Hybrid Search (Semantic + Keyword)
-- Conversational Memory
-- Streaming Responses
-- Authentication & Authorization
-- Docker & Containerization
+- GPT-4o-mini Integration
+- End-to-End Enterprise RAG Pipeline
+
+### Phase 3 — Conversation Memory
+
+- Multi-turn Conversations
+- Session Memory
+- Chat History
+
+### Phase 4 — Streaming Responses
+
+- Token Streaming
+- Real-time Response Generation
+
+### Phase 5 — Evaluation
+
+- Retrieval Metrics
+- Hallucination Evaluation
+- Latency Benchmarking
+
+### Phase 6 — Containerization
+
+- Docker
+- Docker Compose
+
+### Phase 7 — Cloud Deployment
+
+- Azure
+- AWS
 - CI/CD Pipeline
-- Cloud Deployment (AWS / Azure)
-- Evaluation Framework
-- Agentic Workflows
+
+### Phase 8 — Agentic AI
+
+- Tool Calling
 - Multi-Agent Orchestration
+- Workflow Automation
 
 
