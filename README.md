@@ -17,6 +17,12 @@ Designed as an enterprise-style AI Engineering project for scalable educational 
 
 ![RAG Architecture](assets/architecture.png)
 
+## Web Chat Interface
+
+The project also includes a browser-based chat interface for interacting with the Enterprise RAG system.
+
+![Enterprise Chat UI](assets/enterprise-chat-ui.png)
+
 
 ## Project Status
 
