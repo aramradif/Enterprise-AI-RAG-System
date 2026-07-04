@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 
-# RAG Learning Assistant
+# Enterprise AI RAG Learning Assistant
 
 Production-grade Retrieval-Augmented Generation (RAG) application built with FastAPI, OpenAI Embeddings, ChromaDB, and GPT-4o-mini.
 
@@ -19,7 +19,7 @@ Designed as an enterprise-style AI Engineering project for scalable educational 
 
 ## Web Chat Interface
 
-The project also includes a browser-based chat interface for interacting with the Enterprise RAG system.
+The application includes a browser-based chat interface that communicates with the FastAPI Enterprise RAG backend.
 
 ![Enterprise Chat UI](assets/enterprise-chat-ui.png)
 
@@ -34,28 +34,32 @@ The project also includes a browser-based chat interface for interacting with th
 -  Retrieval-Augmented Generation (RAG)
 -  OpenAI Embeddings
 -  ChromaDB Vector Database
--  Multi-document Ingestion
+-  Multi-format Document Ingestion
 -  Source Metadata & Citations
 -  Enterprise Folder Loader
+-  Hybrid Retrieval (Semantic + Keyword)
+-  Intelligent Context Management
+-  Prompt Engineering
+-  GPT-4o-mini Integration
+-  End-to-End Enterprise RAG Pipeline
+-  Enterprise Conversation Memory
+-  Session-Based Chat Memory
+-  Conversation Summarization
+-  Streaming API
+-  Interactive Web Chat Interface
 -  TXT Support
 -  PDF Support
 -  DOCX Support
 -  Markdown Support
-- Hybrid Search
-- Keyword Search
-- Context Management
-- Prompt Engineering
-- GPT-4o-mini Answer Generation
-- End-to-End Enterprise RAG Pipeline
 
 ### Next Milestones
 
-- Conversation Memory
-- Streaming Responses
 - Retrieval Evaluation
+- Authentication & Authorization
 - Docker Deployment
-- CI/CD
-- Cloud Deployment
+- CI/CD Pipeline
+- Cloud Deployment (AWS / Azure)
+- Agentic AI & Multi-Agent Orchestration
 
 
 ## Overview
@@ -74,6 +78,21 @@ This project allows users to:
 * Generate grounded answers using GPT-4o-mini
 
 The result is a more accurate and reliable AI assistant that can answer questions based on specific knowledge sources.
+
+## Current Capabilities
+
+The Enterprise RAG Learning Assistant currently supports:
+
+- Enterprise Retrieval-Augmented Generation (RAG)
+- Hybrid Retrieval (Semantic + Keyword Search)
+- GPT-4o-mini Grounded Answer Generation
+- Conversation Memory
+- Session-Based Chat
+- Conversation Summarization
+- Streaming Responses
+- Browser-Based Chat Interface
+- FastAPI REST API
+- Multi-format Document Ingestion
 
 
 ```text
@@ -156,6 +175,15 @@ The result is a more accurate and reliable AI assistant that can answer question
 -  Grounded Answer Generation
 
 
+### Enterprise Chat
+
+- Interactive Web Chat Interface
+- Streaming Responses
+- Conversation Memory
+- Session-Based Memory
+- Conversation Summarization
+
+
 ## Technology Stack
 
 ### Backend
@@ -200,7 +228,6 @@ The result is a more accurate and reliable AI assistant that can answer question
 
 ## Project Structure
 
-```text
 RAG-Learning-Assistant/
 │
 ├── app/
@@ -210,18 +237,20 @@ RAG-Learning-Assistant/
 │   ├── embeddings/
 │   ├── ingestion/
 │   ├── llm/
+│   ├── memory/
 │   ├── models/
 │   ├── retrieval/
 │   └── services/
 │
 ├── assets/
 ├── data/
+├── frontend/
 ├── scripts/
+├── tests/
 │
 ├── main.py
 ├── requirements.txt
 └── README.md
-```
 
 
 ## Installation
@@ -265,7 +294,6 @@ Open Swagger UI:
 
 http://127.0.0.1:8000/docs
 
-
 ## Example Request
 
 POST /ask
@@ -282,35 +310,66 @@ Response:
 "answer": "RAG combines semantic search with large language models to provide grounded answers based on external documents."
 }
 
+## Streaming Endpoint
+
+POST /ask/stream
+
+Returns:
+
+```
+text/plain (StreamingResponse)
+```
+
+Streams GPT responses incrementally for real-time user interaction.
+
+
+## Web Chat Interface
+
+The project also includes an interactive browser-based chat interface.
+
+Start Live Server (VS Code extension), then open:
+
+```
+http://127.0.0.1:5500/frontend/index.html
+```
+
+The frontend communicates directly with the FastAPI Enterprise RAG backend and supports:
+
+- Conversation Memory
+- Streaming Responses
+- Multi-turn Chat
+- Enterprise RAG Pipeline
+
 
 ## Roadmap
 
 ### Phase 1 — Enterprise Retrieval 
 
-- FastAPI Backend
-- ChromaDB Integration
-- Multi-format Document Ingestion
-- Semantic Search
-- Keyword Search
-- Hybrid Retrieval
-- Context Management
-- Prompt Engineering
+-  FastAPI Backend
+-  ChromaDB Integration
+-  Multi-format Document Ingestion
+-  Semantic Search
+-  Keyword Search
+-  Hybrid Retrieval
+-  Context Management
+-  Prompt Engineering
 
 ### Phase 2 — GPT Integration 
 
-- GPT-4o-mini Integration
-- End-to-End Enterprise RAG Pipeline
+-  GPT-4o-mini Integration
+-  End-to-End Enterprise RAG Pipeline
 
-### Phase 3 — Conversation Memory
+### Phase 3 — Conversation Memory 
 
-- Multi-turn Conversations
-- Session Memory
-- Chat History
+-  Multi-turn Conversations
+-  Session Memory
+-  Chat History
+-  Conversation Summarization
 
-### Phase 4 — Streaming Responses
+### Phase 4 — Streaming Responses 
 
-- Token Streaming
-- Real-time Response Generation
+-  Streaming API
+-  Browser Streaming Interface
 
 ### Phase 5 — Evaluation
 
@@ -318,21 +377,23 @@ Response:
 - Hallucination Evaluation
 - Latency Benchmarking
 
-### Phase 6 — Containerization
+### Phase 6 — Security & Deployment
 
+- Authentication & Authorization
 - Docker
 - Docker Compose
+- CI/CD Pipeline
 
 ### Phase 7 — Cloud Deployment
 
 - Azure
 - AWS
-- CI/CD Pipeline
+- Production Infrastructure
 
 ### Phase 8 — Agentic AI
 
 - Tool Calling
 - Multi-Agent Orchestration
 - Workflow Automation
-
+- MCP Integration
 
