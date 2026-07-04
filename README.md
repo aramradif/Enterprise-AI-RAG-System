@@ -13,6 +13,21 @@ This project demonstrates how modern AI systems combine semantic search, vector 
 
 Designed as an enterprise-style AI Engineering project for scalable educational and knowledge retrieval applications.
 
+## Table of Contents
+
+- Overview
+- System Architecture
+- Web Chat Interface
+- Project Status
+- Current Capabilities
+- Features
+- Technology Stack
+- Project Structure
+- Installation
+- Running the API
+- Web Chat Interface
+- Roadmap
+
 ## System Architecture
 
 ![RAG Architecture](assets/architecture.png)
@@ -78,6 +93,18 @@ This project allows users to:
 * Generate grounded answers using GPT-4o-mini
 
 The result is a more accurate and reliable AI assistant that can answer questions based on specific knowledge sources.
+
+
+## Enterprise Design Principles
+
+- Modular Architecture
+- Separation of Concerns
+- Configurable Components
+- Streaming API Support
+- Hybrid Retrieval
+- Conversation Memory
+- Production-Oriented Folder Structure
+
 
 ## Current Capabilities
 
@@ -194,9 +221,10 @@ The Enterprise RAG Learning Assistant currently supports:
 
 ### AI
 
-- OpenAI API
-- GPT-4o-mini
+- OpenAI GPT-4o-mini
 - text-embedding-3-small
+- Prompt Engineering
+- Retrieval-Augmented Generation (RAG)
 
 ### Vector Database
 
@@ -257,7 +285,9 @@ RAG-Learning-Assistant/
 
 Clone the repository:
 
-git clone https://github.com/aramradif/RAG-Learning-Assistant.git
+```bash
+git clone https://github.com/aramradif/Enterprise-AI-RAG-System.git
+```
 
 Navigate into the project:
 
@@ -396,4 +426,5 @@ The frontend communicates directly with the FastAPI Enterprise RAG backend and s
 - Multi-Agent Orchestration
 - Workflow Automation
 - MCP Integration
+
 
