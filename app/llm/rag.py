@@ -1,12 +1,14 @@
 from app.config.settings import settings
 from app.llm.openai_client import client
+from app.models.llm_result import LLMResult
 
 
 def generate_answer(
     prompt: str,
-) -> str:
+) -> LLMResult:
     """
-    Generate an answer using GPT.
+    Generate an answer using GPT and return
+    both the answer and token usage.
     """
 
     response = client.chat.completions.create(
@@ -19,7 +21,12 @@ def generate_answer(
         ],
     )
 
-    return response.choices[0].message.content
+    return LLMResult(
+        answer=response.choices[0].message.content,
+        prompt_tokens=response.usage.prompt_tokens,
+        completion_tokens=response.usage.completion_tokens,
+        total_tokens=response.usage.total_tokens,
+    )
 
 
 def stream_answer(
@@ -45,10 +52,4 @@ def stream_answer(
         delta = chunk.choices[0].delta.content
 
         if delta:
-
-            # Print every streamed chunk to the terminal
-            # This helps verify whether OpenAI is sending
-            # true incremental chunks or buffering them.
-            print(repr(delta))
-
             yield delta

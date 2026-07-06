@@ -32,6 +32,22 @@ def ask(
     )
 
 
+@router.post("/evaluate")
+def evaluate(
+    request: QuestionRequest,
+):
+    """
+    Enterprise evaluation endpoint.
+
+    Returns the answer together with
+    retrieval, latency, token, and cost metrics.
+    """
+
+    return service.answer_with_metrics(
+        request.question,
+    )
+
+
 @router.post("/ask/stream")
 def ask_stream(
     request: QuestionRequest,
