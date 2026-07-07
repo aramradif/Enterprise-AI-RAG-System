@@ -2,59 +2,80 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Enterprise RAG Learning Assistant</title>
+    <title>Enterprise AI RAG System</title>
 
     <link rel="stylesheet"
           href="style.css">
-
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="app-shell">
 
-        <header>
+        <aside class="sidebar">
 
-            <h1>Enterprise RAG Learning Assistant</h1>
+            <h2>
+                Enterprise AI<br>
+                RAG System
+            </h2>
 
-            <p>
-                FastAPI • GPT-4o-mini • Hybrid Retrieval • ChromaDB
-            </p>
+            <nav>
+                <button class="nav-item active" data-view="chat">💬 Chat</button>
+                <button class="nav-item" data-view="evaluation">📊 Evaluation</button>
+                <button class="nav-item" data-view="sessions">📚 Sessions</button>
+                <button class="nav-item" data-view="logs">📜 Logs</button>
+                <button class="nav-item" data-view="settings">⚙ Settings</button>
+            </nav>
 
-        </header>
-
-        <main>
-
-            <div id="chat-window">
-
+            <div class="sidebar-version">
+                v1.7.0
             </div>
 
-            <div class="input-area">
+        </aside>
 
-                <textarea
-                    id="question"
-                    placeholder="Ask a question..."
-                ></textarea>
+        <div class="main-panel">
 
-                <button id="send-button">
+            <header>
+                <h1>Enterprise AI RAG System</h1>
 
-                    Send
+                <p>
+                    FastAPI • GPT-4o-mini • Hybrid Retrieval • ChromaDB • Streaming • Enterprise Evaluation
+                </p>
+            </header>
 
-                </button>
+            <main id="workspace">
 
-            </div>
+                <section id="chat-section">
 
-        </main>
+                    <div id="chat-window"></div>
+
+                    <div class="input-area">
+
+                        <textarea
+                            id="question"
+                            placeholder="Ask a question..."
+                        ></textarea>
+
+                        <button id="send-button">
+                            Send
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
 
     </div>
 
-    <script src="app.js"></script>
+    <script type="module" src="js/app.js"></script>
 
 </body>
 
