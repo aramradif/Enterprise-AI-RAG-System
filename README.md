@@ -13,6 +13,14 @@ This project demonstrates how modern AI systems combine semantic search, vector 
 
 Designed as an enterprise-style AI Engineering project for scalable educational and knowledge retrieval applications.
 
+## Quick Start
+
+1. Clone the repository
+2. Install dependencies
+3. Configure your `.env`
+4. Start the FastAPI server
+5. Launch the Enterprise Web Platform
+
 ## Table of Contents
 
 - Overview
@@ -32,11 +40,23 @@ Designed as an enterprise-style AI Engineering project for scalable educational 
 
 ![RAG Architecture](assets/architecture.png)
 
-## Web Chat Interface
+## Enterprise Web Platform
 
-The application includes a browser-based chat interface that communicates with the FastAPI Enterprise RAG backend.
+The project includes an enterprise-style web platform that provides an interactive interface for communicating with the FastAPI backend.
 
-![Enterprise Chat UI](assets/enterprise-chat-ui.png)
+Current capabilities include:
+
+- Streaming AI chat
+- Enterprise Evaluation Dashboard
+- Persistent chat state
+- Sidebar navigation
+- Hybrid Retrieval
+- Real-time evaluation metrics
+- Token usage and estimated cost reporting
+
+The platform is designed to evolve into a complete Enterprise AI workspace with session management, observability, authentication, and administrative capabilities.
+
+![Enterprise Web Platform](assets/web-platform.png)
 
 
 ## Project Status
@@ -308,7 +328,7 @@ Install dependencies:
 pip install -r requirements.txt
 
 
-## Running the API
+## Running the Backend API
 
 ## API Documentation
 
@@ -353,7 +373,7 @@ text/plain (StreamingResponse)
 Streams GPT responses incrementally for real-time user interaction.
 
 
-## Web Chat Interface
+## Using the Enterprise Web Platform
 
 The project also includes an interactive browser-based chat interface.
 
