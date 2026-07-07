@@ -4,146 +4,68 @@
 ![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+# Enterprise AI RAG System
 
-# Enterprise-AI-RAG-System
+A production-oriented **Retrieval-Augmented Generation (RAG)** platform built with **FastAPI**, **OpenAI GPT-4o-mini**, **OpenAI Embeddings**, and **ChromaDB**.
 
-Production-grade Retrieval-Augmented Generation (RAG) application built with FastAPI, OpenAI Embeddings, ChromaDB, and GPT-4o-mini.
+The project demonstrates how modern enterprise AI systems combine **hybrid retrieval**, **vector search**, **conversation memory**, **streaming responses**, and **evaluation metrics** to deliver grounded, context-aware answers from custom knowledge bases.
 
-This project demonstrates how modern AI systems combine semantic search, vector databases, and large language models to deliver grounded and context-aware answers from custom knowledge sources.
+Unlike a simple chatbot, this project is being developed as a complete **Enterprise AI Platform**, with an extensible architecture that will continue to evolve through observability, authentication, CI/CD, cloud deployment, and agentic AI capabilities.
 
-Designed as an enterprise-style AI Engineering project for scalable educational and knowledge retrieval applications.
+![Enterprise Web Platform](assets/web-platform.png)
 
-## Quick Start
+---
+
+# Quick Start
 
 1. Clone the repository
 2. Install dependencies
 3. Configure your `.env`
-4. Start the FastAPI server
+4. Start the FastAPI backend
 5. Launch the Enterprise Web Platform
 
-## Table of Contents
+---
+
+# Table of Contents
 
 - Overview
 - System Architecture
-- Web Chat Interface
-- Project Status
-- Current Capabilities
-- Features
+- Enterprise Web Platform
+- Key Features
 - Technology Stack
 - Project Structure
 - Installation
-- Running the API
-- Web Chat Interface
+- Running the Backend API
+- API Endpoints
 - Roadmap
 
-## System Architecture
+---
 
-![RAG Architecture](assets/architecture.png)
+# Overview
 
-## Enterprise Web Platform
+Traditional Large Language Models generate responses using only the knowledge contained in their training data.
 
-The project includes an enterprise-style web platform that provides an interactive interface for communicating with the FastAPI backend.
-
-Current capabilities include:
-
-- Streaming AI chat
-- Enterprise Evaluation Dashboard
-- Persistent chat state
-- Sidebar navigation
-- Hybrid Retrieval
-- Real-time evaluation metrics
-- Token usage and estimated cost reporting
-
-The platform is designed to evolve into a complete Enterprise AI workspace with session management, observability, authentication, and administrative capabilities.
-
-![Enterprise Web Platform](assets/web-platform.png)
-
-
-## Project Status
-
-**Current Version:** v1.6
-
-### Completed
-
--  FastAPI REST API
--  Retrieval-Augmented Generation (RAG)
--  OpenAI Embeddings
--  ChromaDB Vector Database
--  Multi-format Document Ingestion
--  Source Metadata & Citations
--  Enterprise Folder Loader
--  Hybrid Retrieval (Semantic + Keyword)
--  Intelligent Context Management
--  Prompt Engineering
--  GPT-4o-mini Integration
--  End-to-End Enterprise RAG Pipeline
--  Enterprise Conversation Memory
--  Session-Based Chat Memory
--  Conversation Summarization
--  Streaming API
--  Interactive Web Chat Interface
--  TXT Support
--  PDF Support
--  DOCX Support
--  Markdown Support
-
-### Next Milestones
-
-- Retrieval Evaluation
-- Authentication & Authorization
-- Docker Deployment
-- CI/CD Pipeline
-- Cloud Deployment (AWS / Azure)
-- Agentic AI & Multi-Agent Orchestration
-
-
-## Overview
-
-Traditional Large Language Models generate responses based only on their training data.
-
-Retrieval-Augmented Generation (RAG) enhances LLMs by retrieving relevant information from external documents before generating a response.
+Retrieval-Augmented Generation (RAG) improves answer quality by retrieving relevant information from external documents before generating a response.
 
 This project allows users to:
 
-* Upload documents
-* Convert documents into embeddings
-* Store embeddings in ChromaDB
-* Perform semantic search
-* Retrieve relevant context
-* Generate grounded answers using GPT-4o-mini
+- Ingest enterprise documents
+- Generate embeddings
+- Store vectors in ChromaDB
+- Perform hybrid retrieval
+- Maintain conversation memory
+- Stream AI responses
+- Evaluate retrieval and generation performance
+- Generate grounded answers using GPT-4o-mini
 
-The result is a more accurate and reliable AI assistant that can answer questions based on specific knowledge sources.
+---
 
+# System Architecture
 
-## Enterprise Design Principles
+![Architecture](assets/architecture.png)
 
-- Modular Architecture
-- Separation of Concerns
-- Configurable Components
-- Streaming API Support
-- Hybrid Retrieval
-- Conversation Memory
-- Production-Oriented Folder Structure
-
-
-## Current Capabilities
-
-The Enterprise RAG Learning Assistant currently supports:
-
-- Enterprise Retrieval-Augmented Generation (RAG)
-- Hybrid Retrieval (Semantic + Keyword Search)
-- GPT-4o-mini Grounded Answer Generation
-- Conversation Memory
-- Session-Based Chat
-- Conversation Summarization
-- Streaming Responses
-- Browser-Based Chat Interface
-- FastAPI REST API
-- Multi-format Document Ingestion
-
-
-```text
-                 Documents
+```
+                Documents
         (TXT • PDF • DOCX • MD)
                      │
                      ▼
@@ -162,127 +84,175 @@ The Enterprise RAG Learning Assistant currently supports:
               ChromaDB Vector Store
                      │
                      ▼
-         Hybrid Search (Semantic + Keyword)
+      Hybrid Retrieval (Semantic + Keyword)
                      │
                      ▼
-              Context Manager
+             Context Management
                      │
                      ▼
-               Prompt Builder
+              Prompt Engineering
                      │
                      ▼
                 GPT-4o-mini
                      │
                      ▼
-             Grounded Response
+            Grounded AI Response
 ```
 
+---
 
-## Features
+# Enterprise Web Platform
 
-### Core RAG Capabilities
+The project includes an enterprise-style web platform that communicates directly with the FastAPI backend.
 
--  Retrieval-Augmented Generation (RAG)
--  GPT-4o-mini Integration
--  OpenAI Embeddings
--  ChromaDB Vector Database
+Current capabilities include:
 
-### Retrieval Pipeline
-
--  Semantic Search
--  Keyword Search
--  Hybrid Retrieval (Semantic + Keyword)
--  Intelligent Context Management
--  Prompt Engineering
-
-### Document Processing
-
--  Multi-format Document Ingestion
-  - TXT
-  - PDF
-  - DOCX
-  - Markdown
--  Document Chunking Pipeline
--  Metadata & Source Tracking
-
-### Architecture
-
--  FastAPI REST API
--  Modular Enterprise Architecture
--  Configurable Environment Variables
--  End-to-End Enterprise RAG Pipeline
--  Local Vector Storage
-
-### AI Pipeline
-
--  Hybrid Retrieval
--  Context Window Management
--  Prompt Engineering
--  GPT-4o-mini Response Generation
--  Grounded Answer Generation
-
-
-### Enterprise Chat
-
-- Interactive Web Chat Interface
-- Streaming Responses
+- Streaming AI Chat
+- Enterprise Evaluation Dashboard
+- Persistent Chat State
+- Hybrid Retrieval
 - Conversation Memory
+- Real-Time Evaluation Metrics
+- Token Usage Tracking
+- Estimated Cost Reporting
+- Sidebar Navigation
+
+The platform is designed to evolve into a complete Enterprise AI workspace featuring observability, authentication, administrative tooling, and cloud deployment.
+
+![Enterprise Web Platform](assets/web-platform.png)
+
+---
+
+# Current Version
+
+**v1.7**
+
+---
+
+# Key Features
+
+## AI & Retrieval
+
+- Retrieval-Augmented Generation (RAG)
+- GPT-4o-mini Integration
+- OpenAI Embeddings
+- Hybrid Retrieval (Semantic + Keyword)
+- Intelligent Context Management
+- Prompt Engineering
+- Grounded AI Responses
+
+---
+
+## Knowledge Base
+
+- ChromaDB Vector Database
+- Enterprise Folder Loader
+- Multi-format Document Ingestion
+- Automatic Chunking
+- Source Metadata & Citations
+
+Supported document types:
+
+- PDF
+- DOCX
+- TXT
+- Markdown
+
+---
+
+## Conversation Intelligence
+
 - Session-Based Memory
-- Conversation Summarization
+- Enterprise Conversation Memory
+- Conversation Summaries
+- Multi-turn Conversations
+- Streaming Responses
 
+---
 
-## Technology Stack
+## Enterprise Web Platform
 
-### Backend
+- Enterprise Dashboard
+- Interactive Streaming Chat
+- Evaluation Dashboard
+- Persistent Chat State
+- Sidebar Navigation
+
+---
+
+## AI Evaluation
+
+- Retrieval Latency
+- LLM Latency
+- Token Usage
+- Prompt Tokens
+- Completion Tokens
+- Total Tokens
+- Estimated Cost Tracking
+- Documents Retrieved
+
+---
+
+## Backend
+
+- FastAPI REST API
+- Modular Enterprise Architecture
+- Configurable Environment Variables
+- End-to-End Enterprise AI Pipeline
+
+---
+
+# Technology Stack
+
+## Backend
 
 - Python 3.14
 - FastAPI
 - Uvicorn
 
-### AI
+## Artificial Intelligence
 
 - OpenAI GPT-4o-mini
 - text-embedding-3-small
-- Prompt Engineering
 - Retrieval-Augmented Generation (RAG)
+- Prompt Engineering
 
-### Vector Database
+## Vector Database
 
 - ChromaDB
 
-### Document Processing
+## Document Processing
 
-- TXT
 - PDF (pypdf)
 - DOCX (python-docx)
-- Markdown (markdown + BeautifulSoup)
+- TXT
+- Markdown
 
-### Development
+## Frontend
+
+- HTML
+- CSS
+- JavaScript (ES Modules)
+
+## Development
 
 - Git
 - GitHub
 - VS Code
 
+---
 
-## Supported Document Types
+# Project Structure
 
-| Document Type | Supported |
-|--------------|-----------|
-| TXT | ✅ |
-| PDF | ✅ |
-| DOCX | ✅ |
-| Markdown | ✅ |
-
-
-## Project Structure
-
-RAG-Learning-Assistant/
+```text
+Enterprise-AI-RAG-System/
 │
 ├── app/
 │   ├── api/
 │   ├── config/
 │   ├── core/
 │   ├── embeddings/
+│   ├── evaluation/
 │   ├── ingestion/
 │   ├── llm/
 │   ├── memory/
@@ -293,15 +263,20 @@ RAG-Learning-Assistant/
 ├── assets/
 ├── data/
 ├── frontend/
+│   ├── js/
+│   └── pages/
+│
 ├── scripts/
 ├── tests/
 │
 ├── main.py
 ├── requirements.txt
 └── README.md
+```
 
+---
 
-## Installation
+# Installation
 
 Clone the repository:
 
@@ -311,140 +286,149 @@ git clone https://github.com/aramradif/Enterprise-AI-RAG-System.git
 
 Navigate into the project:
 
-cd RAG-Learning-Assistant
+```bash
+cd Enterprise-AI-RAG-System
+```
 
 Create a virtual environment:
 
+```bash
 python -m venv .venv
+```
 
-Activate:
+Activate it:
 
-Windows:
+### Windows
 
+```bash
 .venv\Scripts\activate
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-## Running the Backend API
+# Running the Backend API
 
-## API Documentation
+Start the FastAPI server:
 
-The application includes interactive Swagger UI documentation.
-
-![Swagger UI](assets/swagger-ui.png)
-
-Start FastAPI:
-
+```bash
 uvicorn main:app --reload
+```
 
 Open Swagger UI:
 
+```
 http://127.0.0.1:8000/docs
-
-## Example Request
-
-POST /ask
-
-Request:
-
-{
-"question": "What is RAG?"
-}
-
-Response:
-
-{
-"answer": "RAG combines semantic search with large language models to provide grounded answers based on external documents."
-}
-
-## Streaming Endpoint
-
-POST /ask/stream
-
-Returns:
-
-```
-text/plain (StreamingResponse)
 ```
 
-Streams GPT responses incrementally for real-time user interaction.
+![Swagger UI](assets/swagger-ui.png)
 
+---
 
-## Using the Enterprise Web Platform
+# API Endpoints
 
-The project also includes an interactive browser-based chat interface.
+| Endpoint | Description |
+|-----------|-------------|
+| POST /ask | Standard RAG question answering |
+| POST /ask/stream | Streaming AI responses |
+| POST /evaluate | AI evaluation metrics |
+| GET /health | Health check |
 
-Start Live Server (VS Code extension), then open:
+---
+
+# Enterprise Web Platform
+
+Launch the frontend using VS Code Live Server.
+
+Open:
 
 ```
 http://127.0.0.1:5500/frontend/index.html
 ```
 
-The frontend communicates directly with the FastAPI Enterprise RAG backend and supports:
+The frontend currently supports:
 
+- Streaming Chat
 - Conversation Memory
-- Streaming Responses
-- Multi-turn Chat
-- Enterprise RAG Pipeline
+- Enterprise Evaluation Dashboard
+- Real-Time AI Metrics
+- Persistent Chat State
 
+---
 
-## Roadmap
+# Roadmap
 
-### Phase 1 — Enterprise Retrieval 
+## ✅ Phase 1 — Enterprise Retrieval
 
--  FastAPI Backend
--  ChromaDB Integration
--  Multi-format Document Ingestion
--  Semantic Search
--  Keyword Search
--  Hybrid Retrieval
--  Context Management
--  Prompt Engineering
+- FastAPI Backend
+- ChromaDB Integration
+- Hybrid Retrieval
+- Multi-format Document Support
+- Prompt Engineering
 
-### Phase 2 — GPT Integration 
+## ✅ Phase 2 — GPT Integration
 
--  GPT-4o-mini Integration
--  End-to-End Enterprise RAG Pipeline
+- GPT-4o-mini
+- End-to-End Enterprise RAG Pipeline
 
-### Phase 3 — Conversation Memory 
+## ✅ Phase 3 — Conversation Intelligence
 
--  Multi-turn Conversations
--  Session Memory
--  Chat History
--  Conversation Summarization
+- Session Memory
+- Conversation Memory
+- Conversation Summaries
 
-### Phase 4 — Streaming Responses 
+## ✅ Phase 4 — Enterprise Web Platform
 
--  Streaming API
--  Browser Streaming Interface
+- Streaming Chat
+- Sidebar Navigation
+- Persistent Chat State
 
-### Phase 5 — Evaluation
+## ✅ Phase 5 — Enterprise AI Evaluation
 
+- Evaluation Dashboard
 - Retrieval Metrics
-- Hallucination Evaluation
-- Latency Benchmarking
+- Token Usage
+- Cost Estimation
 
-### Phase 6 — Security & Deployment
+## 🔄 Phase 6 — Enterprise Observability
 
-- Authentication & Authorization
+- Structured Logging
+- Log Dashboard
+- Request History
+
+## ⏳ Phase 7 — Security
+
+- Authentication
+- Authorization
+- User Management
+
+## ⏳ Phase 8 — DevOps
+
 - Docker
 - Docker Compose
 - CI/CD Pipeline
+- Automated Testing
 
-### Phase 7 — Cloud Deployment
+## ⏳ Phase 9 — Cloud Deployment
 
-- Azure
 - AWS
+- Azure
 - Production Infrastructure
 
-### Phase 8 — Agentic AI
+## ⏳ Phase 10 — Agentic AI
 
 - Tool Calling
-- Multi-Agent Orchestration
-- Workflow Automation
+- Multi-Agent Workflows
 - MCP Integration
+- AI Automation
 
+---
 
+# License
+
+This project is licensed under the MIT License.
