@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-07-08T22:08:04.222651+00:00",
+    "question": "What is RAG?",
+    "status": "success",
+    "retrieval_time_ms": 3896.32,
+    "llm_time_ms": 3192.49,
+    "documents_retrieved": 3,
+    "prompt_tokens": 173,
+    "completion_tokens": 86,
+    "total_tokens": 259,
+    "estimated_cost_usd": 7.755e-05
+  }
+]

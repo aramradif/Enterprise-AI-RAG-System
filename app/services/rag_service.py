@@ -8,6 +8,10 @@ from app.evaluation.evaluator import (
 from app.evaluation.report import build_evaluation_report
 from app.llm.prompt_builder import build_prompt
 from app.llm.rag import generate_answer, stream_answer
+from app.logging.logger import (
+    create_log_entry,
+    write_log_entry,
+)
 from app.memory.conversation_manager import ConversationManager
 from app.retrieval.hybrid_search import hybrid_search
 
@@ -23,6 +27,7 @@ class RAGService:
     - Prompt Building
     - GPT Answer Generation
     - Evaluation Metrics
+    - Observability Logging
     """
 
     def __init__(self):
@@ -73,7 +78,8 @@ class RAGService:
 
     def answer_with_metrics(self, question: str):
         """
-        RAG pipeline with enterprise evaluation metrics.
+        RAG pipeline with enterprise evaluation metrics
+        and observability logging.
         """
 
         metrics = create_metrics(question)
@@ -119,9 +125,19 @@ class RAGService:
 
         self.conversation.add_assistant_message(llm_result.answer)
 
+        evaluation_report = build_evaluation_report(metrics)
+
+        log_entry = create_log_entry(
+            question=question,
+            metrics=evaluation_report,
+            status="success",
+        )
+
+        write_log_entry(log_entry)
+
         return {
             "answer": llm_result.answer,
-            "metrics": build_evaluation_report(metrics),
+            "metrics": evaluation_report,
         }
 
     def stream(self, question: str):

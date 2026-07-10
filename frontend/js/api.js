@@ -36,3 +36,16 @@ export async function evaluateQuestion(question) {
 
     return response.json();
 }
+
+
+export async function getLogs() {
+    const response = await fetch(
+        "http://127.0.0.1:8000/logs"
+    );
+
+    if (!response.ok) {
+        throw new Error("Logs request failed.");
+    }
+
+    return response.json();
+}

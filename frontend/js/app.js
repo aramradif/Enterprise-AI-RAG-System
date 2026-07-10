@@ -1,5 +1,6 @@
 import {
     evaluateQuestion,
+    getLogs,
     streamQuestion,
 } from "./api.js";
 
@@ -7,6 +8,18 @@ const workspace = document.getElementById("workspace");
 const navButtons = document.querySelectorAll(".nav-item");
 
 let chatMessages = [];
+
+function formatDateTime(timestamp) {
+    const date = new Date(timestamp);
+
+    return date.toLocaleString([], {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+    });
+}
 
 function renderChatView() {
     workspace.innerHTML = `
@@ -60,10 +73,187 @@ function renderEvaluationView() {
     initializeEvaluation();
 }
 
+async function renderLogsView() {
+    workspace.innerHTML = `
+        <section class="evaluation-view">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Enterprise Logs Dashboard</h2>
+
+                    <p>
+                        View saved RAG request logs, latency, token usage,
+                        estimated cost, and request status.
+                    </p>
+                </div>
+
+                <button id="refresh-logs-button">
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <div id="logs-results">
+                <div class="placeholder-card">
+                    Loading logs...
+                </div>
+            </div>
+        </section>
+    `;
+
+    document
+        .getElementById("refresh-logs-button")
+        .addEventListener("click", renderLogsView);
+
+    const results = document.getElementById("logs-results");
+
+    try {
+        const logs = await getLogs();
+
+        if (!logs.length) {
+            results.innerHTML = `
+                <div class="placeholder-card">
+                    No logs found yet.
+                </div>
+            `;
+            return;
+        }
+
+        const totalRequests = logs.length;
+
+        const totalRetrieval = logs.reduce(
+            (sum, log) => sum + Number(log.retrieval_time_ms || 0),
+            0
+        );
+
+        const totalLlm = logs.reduce(
+            (sum, log) => sum + Number(log.llm_time_ms || 0),
+            0
+        );
+
+        const totalTokens = logs.reduce(
+            (sum, log) => sum + Number(log.total_tokens || 0),
+            0
+        );
+
+        const totalCost = logs.reduce(
+            (sum, log) => sum + Number(log.estimated_cost_usd || 0),
+            0
+        );
+
+        const successCount = logs.filter(
+            (log) => log.status === "success"
+        ).length;
+
+        const avgRetrieval = Math.round(totalRetrieval / totalRequests);
+        const avgLlm = Math.round(totalLlm / totalRequests);
+        const avgTokens = Math.round(totalTokens / totalRequests);
+        const successRate = Math.round((successCount / totalRequests) * 100);
+
+        const rows = logs
+            .slice()
+            .reverse()
+            .map((log, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${formatDateTime(log.timestamp)}</td>
+                    <td class="question-cell">${log.question}</td>
+                    <td>${Math.round(log.retrieval_time_ms)} ms</td>
+                    <td>${Math.round(log.llm_time_ms)} ms</td>
+                    <td>${log.total_tokens}</td>
+                    <td>$${Number(log.estimated_cost_usd).toFixed(6)}</td>
+                    <td>
+                        <span class="status-badge status-success">
+                            Success
+                        </span>
+                    </td>
+                </tr>
+            `)
+            .join("");
+
+        results.innerHTML = `
+            <div class="metrics-grid logs-summary-grid">
+
+                <div class="metric-card">
+                    <span>Total Requests</span>
+                    <strong>${totalRequests}</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Avg Retrieval</span>
+                    <strong>${avgRetrieval} ms</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Avg LLM</span>
+                    <strong>${avgLlm} ms</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Avg Tokens</span>
+                    <strong>${avgTokens}</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Total Tokens</span>
+                    <strong>${totalTokens}</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Total Cost</span>
+                    <strong>$${totalCost.toFixed(6)}</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Success Rate</span>
+                    <strong>${successRate}%</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Latest Request</span>
+                    <strong>${new Date(logs[logs.length - 1].timestamp).toLocaleTimeString([], {
+                        hour: "numeric",
+                        minute: "2-digit",
+                    })}</strong>
+                </div>
+
+            </div>
+
+            <table class="logs-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Time</th>
+                        <th>Question</th>
+                        <th>Retrieval</th>
+                        <th>LLM</th>
+                        <th>Tokens</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    ${rows}
+                </tbody>
+            </table>
+        `;
+    }
+
+    catch (error) {
+        results.innerHTML = `
+            <div class="placeholder-card">
+                Unable to load logs.
+            </div>
+        `;
+
+        console.error(error);
+    }
+}
+
 function renderPlaceholderView(title, description) {
     workspace.innerHTML = `
         <section class="placeholder-view">
             <h2>${title}</h2>
+
             <p>${description}</p>
 
             <div class="placeholder-card">
@@ -104,10 +294,7 @@ function initializeNavigation() {
             }
 
             if (view === "logs") {
-                renderPlaceholderView(
-                    "Logs",
-                    "Inspect structured request logs and observability data."
-                );
+                renderLogsView();
             }
 
             if (view === "settings") {
