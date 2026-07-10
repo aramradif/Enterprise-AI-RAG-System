@@ -123,9 +123,30 @@ The platform is designed to evolve into a complete Enterprise AI workspace featu
 
 ---
 
-# Current Version
+# Project Status
 
-**v1.7**
+**Current Version:** v1.8
+
+## Latest Release (v1.8)
+
+### New Features
+
+- Enterprise Logs Dashboard
+- Persistent Request Logging
+- Enterprise Observability API (`GET /logs`)
+- Summary Metrics Dashboard
+- Token Usage Tracking
+- Cost Estimation
+- Refreshable Logs Dashboard
+- Enterprise UI Enhancements
+
+### Improvements
+
+- Improved dashboard layout
+- Professional status badges
+- Better timestamp formatting
+- Cleaner metrics presentation
+- Enhanced observability architecture
 
 ---
 
