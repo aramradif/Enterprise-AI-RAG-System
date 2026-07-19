@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enterprise AI RAG Architecture</title>
+<style>
+  html,body{margin:0;background:#07111f;min-height:100%;}
+  .stage{display:grid;place-items:center;padding:20px;}
+  svg{width:min(100%,1800px);height:auto;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.45);}
+</style>
+</head>
+<body>
+<div class="stage">
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="52%" stop-color="#0b1730"/>
+      <stop offset="100%" stop-color="#111d35"/>
+    </linearGradient>
+
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#eef6ff" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="api" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+
+    <linearGradient id="rag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ede9fe"/>
+      <stop offset="100%" stop-color="#ddd6fe"/>
+    </linearGradient>
+
+    <linearGradient id="memory" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+
+    <linearGradient id="obs" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dcfce7"/>
+      <stop offset="100%" stop-color="#bbf7d0"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+
+    <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <marker id="arrowBlue" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#60a5fa"/>
+    </marker>
+
+    <marker id="arrowGreen" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#34d399"/>
+    </marker>
+
+    <style>
+      .title{font:700 44px 'Segoe UI',Arial,sans-serif;fill:#f8fafc;letter-spacing:.2px}
+      .subtitle{font:400 18px 'Segoe UI',Arial,sans-serif;fill:#b8c4d6}
+      .layer-label{font:700 15px 'Segoe UI',Arial,sans-serif;fill:#7dd3fc;letter-spacing:1.6px}
+      .card-title{font:700 22px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+      .card-text{font:400 15px 'Segoe UI',Arial,sans-serif;fill:#334155}
+      .small{font:600 13px 'Segoe UI',Arial,sans-serif;fill:#475569}
+      .chip{font:700 12px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+      .card{fill:url(#panel);stroke:#dbeafe;stroke-width:1.6;rx:22;filter:url(#shadow)}
+      .card-api{fill:url(#api);stroke:#60a5fa}
+      .card-rag{fill:url(#rag);stroke:#a78bfa}
+      .card-memory{fill:url(#memory);stroke:#f59e0b}
+      .card-obs{fill:url(#obs);stroke:#34d399}
+      .flow-blue{fill:none;stroke:#60a5fa;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrowBlue);opacity:.95}
+      .flow-green{fill:none;stroke:#34d399;stroke-width:4.5;stroke-linecap:round;marker-end:url(#arrowGreen);opacity:.95}
+      .lane{fill:none;stroke:#334155;stroke-opacity:.35;stroke-width:1.5;stroke-dasharray:4 8}
+      .packet-blue{fill:#93c5fd;filter:url(#glowBlue)}
+      .packet-green{fill:#6ee7b7;filter:url(#glowGreen)}
+      .pulse{animation:pulse 2.4s ease-in-out infinite}
+      .shine{animation:shine 3.4s ease-in-out infinite}
+      @keyframes pulse{0%,100%{opacity:1}50%{opacity:.78}}
+      @keyframes shine{0%,100%{opacity:.7}50%{opacity:1}}
+    </style>
+  </defs>
+
+  <rect width="1800" height="1120" fill="url(#bg)"/>
+
+  <g opacity=".16">
+    <circle cx="150" cy="140" r="130" fill="#2563eb"/>
+    <circle cx="1650" cy="180" r="170" fill="#7c3aed"/>
+    <circle cx="1500" cy="940" r="200" fill="#059669"/>
+  </g>
+
+  <text x="900" y="62" text-anchor="middle" class="title">Enterprise AI RAG System Architecture</text>
+  <text x="900" y="95" text-anchor="middle" class="subtitle">Production-style request routing, retrieval, generation, session memory, evaluation, and observability</text>
+
+  <text x="74" y="142" class="layer-label">EXPERIENCE LAYER</text>
+  <rect x="74" y="160" width="1652" height="120" class="card card-api"/>
+  <text x="900" y="202" text-anchor="middle" class="card-title">Enterprise Web Platform</text>
+  <text x="900" y="232" text-anchor="middle" class="card-text">Chat • Evaluation Dashboard • Sessions • Conversation History • Logs • Settings</text>
+  <text x="900" y="258" text-anchor="middle" class="small">Streaming responses, active-session switching, source citations, and dashboard observability</text>
+
+  <text x="74" y="332" class="layer-label">API &amp; ORCHESTRATION LAYER</text>
+  <rect x="110" y="350" width="480" height="155" class="card card-api"/>
+  <text x="350" y="392" text-anchor="middle" class="card-title">FastAPI REST API</text>
+  <text x="350" y="424" text-anchor="middle" class="card-text">/ask • /ask/stream • /evaluate</text>
+  <text x="350" y="451" text-anchor="middle" class="card-text">/sessions • /logs • /health</text>
+  <rect x="177" y="468" width="112" height="24" rx="12" fill="#bfdbfe"/>
+  <text x="233" y="485" text-anchor="middle" class="chip">OpenAPI 3.1</text>
+  <rect x="302" y="468" width="112" height="24" rx="12" fill="#dbeafe"/>
+  <text x="358" y="485" text-anchor="middle" class="chip">Streaming</text>
+
+  <rect x="660" y="350" width="480" height="155" class="card card-rag pulse"/>
+  <text x="900" y="392" text-anchor="middle" class="card-title">RAG Service &amp; Request Router</text>
+  <text x="900" y="424" text-anchor="middle" class="card-text">Routes document questions vs. conversation questions</text>
+  <text x="900" y="451" text-anchor="middle" class="card-text">Builds prompts • invokes retrieval • attaches citations</text>
+  <rect x="776" y="468" width="124" height="24" rx="12" fill="#ddd6fe"/>
+  <text x="838" y="485" text-anchor="middle" class="chip">document_rag</text>
+  <rect x="914" y="468" width="150" height="24" rx="12" fill="#ede9fe"/>
+  <text x="989" y="485" text-anchor="middle" class="chip">conversation_memory</text>
+
+  <rect x="1210" y="350" width="480" height="155" class="card card-memory"/>
+  <text x="1450" y="392" text-anchor="middle" class="card-title">Session &amp; Conversation Memory</text>
+  <text x="1450" y="424" text-anchor="middle" class="card-text">Session history • summaries • timestamps</text>
+  <text x="1450" y="451" text-anchor="middle" class="card-text">Create • inspect • resume • clear • delete</text>
+  <rect x="1356" y="468" width="188" height="24" rx="12" fill="#fde68a"/>
+  <text x="1450" y="485" text-anchor="middle" class="chip">enterprise-demo</text>
+
+  <text x="74" y="565" class="layer-label">RETRIEVAL &amp; GENERATION LAYER</text>
+  <rect x="74" y="585" width="350" height="180" class="card"/>
+  <text x="249" y="628" text-anchor="middle" class="card-title">Hybrid Retrieval</text>
+  <text x="249" y="660" text-anchor="middle" class="card-text">Semantic search</text>
+  <text x="249" y="688" text-anchor="middle" class="card-text">Keyword search</text>
+  <text x="249" y="716" text-anchor="middle" class="card-text">Deduplication + top-k context</text>
+
+  <rect x="464" y="585" width="350" height="180" class="card card-api"/>
+  <text x="639" y="628" text-anchor="middle" class="card-title">ChromaDB Vector Store</text>
+  <text x="639" y="660" text-anchor="middle" class="card-text">Embeddings • chunks • metadata</text>
+  <text x="639" y="688" text-anchor="middle" class="card-text">Sources • chunk IDs • retrieval mode</text>
+  <text x="639" y="716" text-anchor="middle" class="card-text">Persistent semantic index</text>
+
+  <rect x="854" y="585" width="350" height="180" class="card card-obs"/>
+  <text x="1029" y="628" text-anchor="middle" class="card-title">OpenAI Embeddings</text>
+  <text x="1029" y="660" text-anchor="middle" class="card-text">Query and document vectors</text>
+  <text x="1029" y="688" text-anchor="middle" class="card-text">Semantic similarity search</text>
+  <text x="1029" y="716" text-anchor="middle" class="card-text">Retrieval relevance</text>
+
+  <rect x="1244" y="585" width="482" height="180" class="card card-rag pulse"/>
+  <text x="1485" y="628" text-anchor="middle" class="card-title">GPT-4o-mini Generation</text>
+  <text x="1485" y="660" text-anchor="middle" class="card-text">Grounded answer generation</text>
+  <text x="1485" y="688" text-anchor="middle" class="card-text">Conversation-aware reasoning</text>
+  <text x="1485" y="716" text-anchor="middle" class="card-text">Token streaming + final citations</text>
+
+  <text x="74" y="825" class="layer-label">DATA, EVALUATION &amp; OBSERVABILITY LAYER</text>
+  <rect x="74" y="845" width="350" height="175" class="card card-memory"/>
+  <text x="249" y="888" text-anchor="middle" class="card-title">Enterprise Documents</text>
+  <text x="249" y="920" text-anchor="middle" class="card-text">TXT • MD • DOCX • FAQs • policies</text>
+  <text x="249" y="948" text-anchor="middle" class="card-text">Loaded, chunked, and indexed</text>
+
+  <rect x="464" y="845" width="350" height="175" class="card card-rag"/>
+  <text x="639" y="888" text-anchor="middle" class="card-title">Evaluation Engine</text>
+  <text x="639" y="920" text-anchor="middle" class="card-text">Latency • tokens • cost • context length</text>
+  <text x="639" y="948" text-anchor="middle" class="card-text">Prompt type • routing • citations</text>
+
+  <rect x="854" y="845" width="350" height="175" class="card card-obs"/>
+  <text x="1029" y="888" text-anchor="middle" class="card-title">Logs &amp; Observability</text>
+  <text x="1029" y="920" text-anchor="middle" class="card-text">Request history • success rate</text>
+  <text x="1029" y="948" text-anchor="middle" class="card-text">Average latency • tokens • total cost</text>
+
+  <rect x="1244" y="845" width="482" height="175" class="card card-api"/>
+  <text x="1485" y="888" text-anchor="middle" class="card-title">Final Response</text>
+  <text x="1485" y="920" text-anchor="middle" class="card-text">Answer + citations + routing metadata</text>
+  <text x="1485" y="948" text-anchor="middle" class="card-text">Rendered in Chat, Evaluation, Sessions, and Logs</text>
+
+  <path id="p1" d="M900 280 L900 350" class="flow-blue"/>
+  <path id="p2" d="M590 428 L660 428" class="flow-blue"/>
+  <path id="p3" d="M1140 428 L1210 428" class="flow-green"/>
+  <path id="p4" d="M900 505 C760 545, 520 560, 249 585" class="flow-blue"/>
+  <path id="p5" d="M900 505 C1110 535, 1320 555, 1485 585" class="flow-green"/>
+  <path id="p6" d="M1450 505 C1485 540, 1490 555, 1485 585" class="flow-green"/>
+  <path id="p7" d="M424 675 L464 675" class="flow-blue"/>
+  <path id="p8" d="M814 675 L854 675" class="flow-blue"/>
+  <path id="p9" d="M1204 675 L1244 675" class="flow-green"/>
+  <path id="p10" d="M249 845 L249 765" class="flow-blue"/>
+  <path id="p11" d="M639 765 L639 845" class="flow-blue"/>
+  <path id="p12" d="M1029 765 L1029 845" class="flow-green"/>
+  <path id="p13" d="M1485 765 L1485 845" class="flow-blue"/>
+
+  <g class="shine">
+    <circle r="7" class="packet-blue"><animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto"><mpath href="#p1"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto"><mpath href="#p2"/></animateMotion></circle>
+    <circle r="7" class="packet-green"><animateMotion dur="2.3s" repeatCount="indefinite" rotate="auto"><mpath href="#p3"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="3.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p4"/></animateMotion></circle>
+    <circle r="7" class="packet-green"><animateMotion dur="2.8s" repeatCount="indefinite" rotate="auto"><mpath href="#p5"/></animateMotion></circle>
+    <circle r="7" class="packet-green"><animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto"><mpath href="#p6"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#p7"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#p8"/></animateMotion></circle>
+    <circle r="7" class="packet-green"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#p9"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="2.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p10"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="2.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p11"/></animateMotion></circle>
+    <circle r="7" class="packet-green"><animateMotion dur="2.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p12"/></animateMotion></circle>
+    <circle r="7" class="packet-blue"><animateMotion dur="2.0s" repeatCount="indefinite" rotate="auto"><mpath href="#p13"/></animateMotion></circle>
+  </g>
+
+  <text x="900" y="1082" text-anchor="middle" class="subtitle">Animated data packets represent live requests, retrieval results, model generation, evaluation metrics, and observability events.</text>
+</svg>
+</div>
+</body>
+</html>

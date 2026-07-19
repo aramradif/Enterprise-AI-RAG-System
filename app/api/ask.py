@@ -21,10 +21,13 @@ def ask(
 ):
     """
     Standard Enterprise RAG endpoint.
+
+    Uses session-based conversation memory.
     """
 
     answer = service.answer(
-        request.question,
+        question=request.question,
+        session_id=request.session_id,
     )
 
     return AnswerResponse(
@@ -40,11 +43,14 @@ def evaluate(
     Enterprise evaluation endpoint.
 
     Returns the answer together with
-    retrieval, latency, token, and cost metrics.
+    retrieval, latency, token usage,
+    cost estimation, and session-aware
+    conversation memory.
     """
 
     return service.answer_with_metrics(
-        request.question,
+        question=request.question,
+        session_id=request.session_id,
     )
 
 
@@ -54,9 +60,15 @@ def ask_stream(
 ):
     """
     Streaming Enterprise RAG endpoint.
+
+    Streams responses while maintaining
+    conversation history for the selected session.
     """
 
     return StreamingResponse(
-        service.stream(request.question),
+        service.stream(
+            question=request.question,
+            session_id=request.session_id,
+        ),
         media_type="text/plain",
     )

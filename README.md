@@ -12,17 +12,31 @@ The project demonstrates how modern enterprise AI systems combine **hybrid retri
 
 Unlike a simple chatbot, this project is being developed as a complete **Enterprise AI Platform**, with an extensible architecture that will continue to evolve through observability, authentication, CI/CD, cloud deployment, and agentic AI capabilities.
 
-![Enterprise Web Platform](assets/web-platform.png)
+![Enterprise AI Chat](assets/screenshots/chat.png)
 
 ---
 
 # Quick Start
 
-1. Clone the repository
-2. Install dependencies
-3. Configure your `.env`
-4. Start the FastAPI backend
-5. Launch the Enterprise Web Platform
+```bash
+git clone https://github.com/aramradif/Enterprise-AI-RAG-System.git
+
+cd Enterprise-AI-RAG-System
+
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+pip install -r requirements.txt
+
+uvicorn main:app --reload
+```
+
+Open:
+
+- Swagger UI → http://127.0.0.1:8000/docs
+- Enterprise Platform → http://127.0.0.1:5500/frontend/index.html
 
 ---
 
@@ -60,44 +74,58 @@ This project allows users to:
 
 ---
 
+# Enterprise Highlights
+
+This project demonstrates the architecture and engineering practices commonly found in modern enterprise AI applications.
+
+### AI & Retrieval
+
+- Retrieval-Augmented Generation (RAG)
+- Hybrid Retrieval (Semantic + Keyword Search)
+- OpenAI GPT-4o-mini
+- OpenAI Embeddings
+- ChromaDB Vector Database
+- Grounded AI Responses with Source Citations
+
+### Conversation Intelligence
+
+- Session-Based Conversation Memory
+- Conversation Summaries
+- Multi-turn Conversations
+- Intelligent Request Routing
+- Streaming Responses
+
+### Enterprise Platform
+
+- Interactive Chat Interface
+- Sessions Dashboard
+- Conversation History
+- Evaluation Dashboard
+- Logs Dashboard
+- Swagger API Documentation
+
+### AI Observability
+
+- Retrieval Latency
+- LLM Latency
+- Prompt Type Detection
+- Token Usage
+- Estimated Cost
+- Request Logging
+- Enterprise Metrics Dashboard
+
+
 # System Architecture
 
-![Architecture](assets/architecture.png)
+![Enterprise Architecture](assets/diagrams/architecture.png)
 
-```
-                Documents
-        (TXT • PDF • DOCX • MD)
-                     │
-                     ▼
-          Enterprise Folder Loader
-                     │
-                     ▼
-              Text Extraction
-                     │
-                     ▼
-             Automatic Chunking
-                     │
-                     ▼
-           OpenAI Embeddings
-                     │
-                     ▼
-              ChromaDB Vector Store
-                     │
-                     ▼
-      Hybrid Retrieval (Semantic + Keyword)
-                     │
-                     ▼
-             Context Management
-                     │
-                     ▼
-              Prompt Engineering
-                     │
-                     ▼
-                GPT-4o-mini
-                     │
-                     ▼
-            Grounded AI Response
-```
+The Enterprise AI RAG System follows a layered architecture that separates the user interface, API orchestration, retrieval pipeline, large language model, conversation memory, and observability components.
+
+A request flows through the FastAPI API into the RAG Service, where the system determines whether document retrieval is required or whether conversation memory can answer the request directly.
+
+For document questions, Hybrid Retrieval combines semantic vector search and keyword search to retrieve the most relevant document chunks from ChromaDB. These results are used to build a grounded prompt for GPT-4o-mini.
+
+Every request is evaluated and logged, producing latency, token usage, estimated cost, routing information, and source citations that power the Evaluation and Logs dashboards.
 
 ---
 
@@ -119,34 +147,74 @@ Current capabilities include:
 
 The platform is designed to evolve into a complete Enterprise AI workspace featuring observability, authentication, administrative tooling, and cloud deployment.
 
-![Enterprise Web Platform](assets/web-platform.png)
+## Streaming Chat
+
+![Streaming Chat](assets/screenshots/chat.png)
+
+---
+
+## Sessions Dashboard
+
+Manage and switch between conversation sessions.
+
+![Sessions Dashboard](assets/screenshots/sessions-dashboard.png)
+
+---
+
+## Conversation History
+
+Review previous conversations and maintain long-term context.
+
+![Conversation History](assets/screenshots/conversation-history.png)
+
+---
+
+## Evaluation Dashboard
+
+Monitor retrieval latency, LLM performance, token usage, routing decisions, citations, and estimated cost.
+
+![Evaluation Dashboard](assets/screenshots/evaluation-dashboard.png)
+
+---
+
+## Logs Dashboard
+
+Track request history, observability metrics, latency, token consumption, and cost across the system.
+
+![Logs Dashboard](assets/screenshots/logs-dashboard.png)
 
 ---
 
 # Project Status
 
-**Current Version:** v1.8
+**Current Version:** v1.9
 
-## Latest Release (v1.8)
+## Latest Release (v1.9)
 
 ### New Features
 
+- Enterprise Session Management
+- Conversation History Dashboard
+- Enterprise Evaluation Dashboard
 - Enterprise Logs Dashboard
-- Persistent Request Logging
-- Enterprise Observability API (`GET /logs`)
-- Summary Metrics Dashboard
-- Token Usage Tracking
-- Cost Estimation
-- Refreshable Logs Dashboard
-- Enterprise UI Enhancements
+- Intelligent Request Routing
+- Source Citations
+- Prompt Type Detection
+- Streaming AI Responses
+- Hybrid Retrieval (Semantic + Keyword)
+- Conversation Memory
+- Session Lifecycle API
+- Enterprise Observability
 
 ### Improvements
 
-- Improved dashboard layout
-- Professional status badges
-- Better timestamp formatting
-- Cleaner metrics presentation
-- Enhanced observability architecture
+- Professional Enterprise UI
+- Enhanced Evaluation Metrics
+- Token & Cost Tracking
+- Improved API Documentation
+- Better Dashboard Layout
+- Cleaner Session Management
+- Modernized Architecture
 
 ---
 
@@ -347,18 +415,27 @@ Open Swagger UI:
 http://127.0.0.1:8000/docs
 ```
 
-![Swagger UI](assets/swagger-ui.png)
+![Swagger UI](assets/screenshots/swagger-ui.png)
 
 ---
 
 # API Endpoints
 
-| Endpoint | Description |
-|-----------|-------------|
-| POST /ask | Standard RAG question answering |
-| POST /ask/stream | Streaming AI responses |
-| POST /evaluate | AI evaluation metrics |
-| GET /health | Health check |
+The Enterprise AI RAG System exposes a REST API for chat, streaming, evaluation, session management, and observability.
+
+| Method | Endpoint | Description |
+|----------|----------|-------------|
+| GET | `/` | API information |
+| GET | `/health` | Health check |
+| POST | `/ask` | Standard RAG question answering |
+| POST | `/ask/stream` | Streaming AI responses |
+| POST | `/evaluate` | Enterprise evaluation with metrics |
+| GET | `/logs` | Request logs and observability metrics |
+| GET | `/sessions` | List all conversation sessions |
+| POST | `/sessions` | Create a new session |
+| GET | `/sessions/{session_id}` | Retrieve a session and its conversation history |
+| DELETE | `/sessions/{session_id}` | Delete a session |
+| DELETE | `/sessions/{session_id}/messages` | Clear all messages in a session |
 
 ---
 
@@ -384,69 +461,80 @@ The frontend currently supports:
 
 # Roadmap
 
-## ✅ Phase 1 — Enterprise Retrieval
+The Enterprise AI RAG System is being developed incrementally with a focus on production-ready AI engineering practices.
 
-- FastAPI Backend
-- ChromaDB Integration
-- Hybrid Retrieval
-- Multi-format Document Support
-- Prompt Engineering
+##  Completed
 
-## ✅ Phase 2 — GPT Integration
+### Enterprise Retrieval
 
-- GPT-4o-mini
-- End-to-End Enterprise RAG Pipeline
+- Hybrid Retrieval (Semantic + Keyword)
+- ChromaDB Vector Database
+- OpenAI Embeddings
+- Multi-format Document Ingestion
+- Automatic Chunking
 
-## ✅ Phase 3 — Conversation Intelligence
+### Intelligent Generation
 
-- Session Memory
+- GPT-4o-mini Integration
+- Grounded AI Responses
+- Source Citations
+- Streaming Responses
+
+### Conversation Intelligence
+
+- Session Management
 - Conversation Memory
 - Conversation Summaries
+- Conversation History
 
-## ✅ Phase 4 — Enterprise Web Platform
+### Enterprise Platform
 
-- Streaming Chat
-- Sidebar Navigation
-- Persistent Chat State
-
-## ✅ Phase 5 — Enterprise AI Evaluation
-
+- Interactive Chat
+- Sessions Dashboard
 - Evaluation Dashboard
+- Logs Dashboard
+- Swagger API
+- Enterprise Navigation
+
+### AI Observability
+
 - Retrieval Metrics
+- LLM Metrics
+- Prompt Type Detection
 - Token Usage
 - Cost Estimation
+- Request Logging
 
-## 🔄 Phase 6 — Enterprise Observability
+---
 
-- Structured Logging
-- Log Dashboard
-- Request History
-
-## ⏳ Phase 7 — Security
-
-- Authentication
-- Authorization
-- User Management
-
-## ⏳ Phase 8 — DevOps
+##  In Progress
 
 - Docker
 - Docker Compose
 - CI/CD Pipeline
-- Automated Testing
+- Unit & Integration Testing
 
-## ⏳ Phase 9 — Cloud Deployment
+---
 
-- AWS
-- Azure
-- Production Infrastructure
+##  Future Enhancements
 
-## ⏳ Phase 10 — Agentic AI
-
-- Tool Calling
-- Multi-Agent Workflows
+- Authentication & Authorization
+- Redis Caching
+- PostgreSQL Persistence
+- Cloud Deployment (Azure / AWS)
+- Kubernetes
+- Monitoring with Prometheus & Grafana
 - MCP Integration
-- AI Automation
+- Multi-Agent Workflows
+- Enterprise Security
+
+---
+
+# Project Goals
+
+This project was built to demonstrate how modern enterprise AI systems can be designed using Retrieval-Augmented Generation (RAG), large language models, vector databases, conversation memory, streaming APIs, and enterprise observability.
+
+The long-term vision is to evolve this platform into a production-ready enterprise AI assistant with cloud deployment, authentication, scalable infrastructure, agentic AI workflows, and advanced monitoring capabilities.
 
 ---
 
