@@ -4,13 +4,11 @@
 ![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-# Enterprise AI RAG System
+# Enterprise AI Platform
 
-A production-oriented **Retrieval-Augmented Generation (RAG)** platform built with **FastAPI**, **OpenAI GPT-4o-mini**, **OpenAI Embeddings**, and **ChromaDB**.
+A production-oriented enterprise AI platform built with FastAPI, OpenAI GPT-4o-mini, OpenAI Embeddings, and ChromaDB.
 
-The project demonstrates how modern enterprise AI systems combine **hybrid retrieval**, **vector search**, **conversation memory**, **streaming responses**, and **evaluation metrics** to deliver grounded, context-aware answers from custom knowledge bases.
-
-Unlike a simple chatbot, this project is being developed as a complete **Enterprise AI Platform**, with an extensible architecture that will continue to evolve through observability, authentication, CI/CD, cloud deployment, and agentic AI capabilities.
+The platform currently includes Retrieval-Augmented Generation (RAG), hybrid retrieval, conversation memory, streaming responses, AI evaluation, observability, session management, and an enterprise web interface. Its modular architecture is designed to expand into Agentic AI, multi-agent orchestration, and enterprise automation.
 
 ![Enterprise AI Chat](assets/screenshots/chat.png)
 
@@ -119,7 +117,7 @@ This project demonstrates the architecture and engineering practices commonly fo
 
 ![Enterprise Architecture](assets/diagrams/architecture.png)
 
-The Enterprise AI RAG System follows a layered architecture that separates the user interface, API orchestration, retrieval pipeline, large language model, conversation memory, and observability components.
+The Enterprise AI Platform follows a layered architecture that separates the user interface, API orchestration, retrieval pipeline, large language model, conversation memory, and observability components.
 
 A request flows through the FastAPI API into the RAG Service, where the system determines whether document retrieval is required or whether conversation memory can answer the request directly.
 
@@ -421,7 +419,7 @@ http://127.0.0.1:8000/docs
 
 # API Endpoints
 
-The Enterprise AI RAG System exposes a REST API for chat, streaming, evaluation, session management, and observability.
+The Enterprise AI Platform exposes a REST API for chat, streaming, evaluation, session management, and observability.
 
 | Method | Endpoint | Description |
 |----------|----------|-------------|
@@ -461,7 +459,7 @@ The frontend currently supports:
 
 # Roadmap
 
-The Enterprise AI RAG System is being developed incrementally with a focus on production-ready AI engineering practices.
+The Enterprise AI Platform is being developed incrementally with a focus on production-ready AI engineering practices.
 
 ##  Completed
 
