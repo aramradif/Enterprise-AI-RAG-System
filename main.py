@@ -7,7 +7,7 @@ from app.api.logs import router as logs_router
 from app.api.sessions import router as sessions_router
 
 app = FastAPI(
-    title="Enterprise AI RAG System API",
+    title="Enterprise AI Platform API",
     description=(
         "Production-ready Enterprise AI Retrieval-Augmented Generation (RAG) "
         "platform featuring hybrid retrieval, conversation memory, "
