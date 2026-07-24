@@ -9,6 +9,7 @@ import {
     streamQuestion,
 } from "./api.js";
 
+import { renderSettingsView } from "./settings.js";
 
 const workspace = document.getElementById("workspace");
 const navButtons = document.querySelectorAll(".nav-item");
@@ -1020,10 +1021,10 @@ function initializeNavigation() {
             }
 
             if (view === "settings") {
-                renderPlaceholderView(
-                    "Settings",
-                    "Configure models, retrieval behavior, and system parameters."
-                );
+                renderSettingsView(workspace);
+                
+                    
+                
             }
         });
     });
@@ -1352,7 +1353,6 @@ const cleanAnswer = fullAnswer
 
     });
 }
-
 
 initializeNavigation();
 renderChatView();

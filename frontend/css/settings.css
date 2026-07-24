@@ -1,0 +1,65 @@
+.settings-view {
+    padding: 28px;
+}
+
+.settings-view .page-heading {
+    margin-bottom: 24px;
+}
+
+.settings-view .page-heading h2 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: #0f172a;
+}
+
+.settings-view .page-heading p {
+    margin: 0;
+    color: #64748b;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.settings-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.settings-card h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    color: #0f172a;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+.setting-row span {
+    color: #64748b;
+}
+
+.setting-row strong {
+    color: #0f172a;
+    text-align: right;
+}
+
+@media (max-width: 900px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
